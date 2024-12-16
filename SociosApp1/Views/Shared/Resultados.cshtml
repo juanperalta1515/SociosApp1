@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Resultados";
+}
+<div class="container mx-auto mt-10">
+    <h1 class="text-4xl font-bold mb-5">Resultados</h1>
+
+    <h2 class="text-2xl font-semibold mt-10">Cantidad Total de Socios</h2>
+    <p class="text-lg">@Model.CantidadTotal</p>
+
+    <h2 class="text-2xl font-semibold mt-10">Promedio de Edad (Racing)</h2>
+    <p class="text-lg">@Model.PromedioEdadRacing</p>
+
+    <h2 class="text-2xl font-semibold mt-10">Primeros 100 Casados Universitarios</h2>
+    <ul class="list-disc pl-5">
+        @foreach (var socio in Model.CasadosUniversitarios)
+        {
+            <li>@socio.Nombre, @socio.Edad años, @socio.Equipo</li>
+        }    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10">5 Nombres Más Comunes (River)</h2>
+    <ul class="list-disc pl-5">
+        @foreach (var nombre in Model.NombresMasComunesRiver)
+        {
+            <li>@nombre</li>
+        }
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10">Estadísticas por Equipo</h2>
+    <table class="table-auto w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2">Equipo</th>
+                <th class="border border-gray-300 px-4 py-2">Promedio Edad</th>
+                <th class="border border-gray-300 px-4 py-2">Edad Mínima</th>
+                <th class="border border-gray-300 px-4 py-2">Edad Máxima</th>
+                <th class="border border-gray-300 px-4 py-2">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equipo in Model.EstadisticasEquipos)
+            {
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">@equipo.Equipo</td>
+                    <td class="border border-gray-300 px-4 py-2">@equipo.PromedioEdad</td>
+                    <td class="border border-gray-300 px-4 py-2">@equipo.EdadMinima</td>
+                    <td class="border border-gray-300 px-4 py-2">@equipo.EdadMaxima</td>
+                    <td class="border border-gray-300 px-4 py-2">@equipo.CantidadSocios</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

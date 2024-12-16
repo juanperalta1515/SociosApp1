@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Socios" asp-action="ProcesarArchivo" method="post" enctype="multipart/form-data">
+    <label for="archivo" class="block text-sm font-medium text-gray-700">Subir archivo CSV:</label>
+    <input type="file" id="archivo" name="archivo" class="block w-full text-sm text-gray-500 border rounded-md" accept=".csv" required />
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4">Enviar</button>
+</form>
+

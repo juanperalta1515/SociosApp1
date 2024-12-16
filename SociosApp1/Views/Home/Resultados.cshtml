@@ -1,0 +1,53 @@
+﻿@model ResultadosViewModel
+
+@{
+    ViewData["Title"] = "Resultados";
+}
+
+<div class="container mx-auto mt-10">
+    <h1 class="text-4xl font-bold mb-5">Resultados</h1>
+    <h2 class="text-2xl font-semibold mt-10">Cantidad Total de Socios</h2>
+    <p class="text-lg">@Model.CantidadTotal</p>
+
+    <h2 class="text-2xl font-semibold mt-10">Promedio de Edad de los Hinchas de Racing</h2>
+    <p class="text-lg">@Model.PromedioEdadRacing</p>
+
+    <h2 class="text-2xl font-semibold mt-10">Primeros 100 Casados con Estudios Universitarios</h2>
+    <ul class="text-lg">
+        @foreach (var socio in Model.PrimerosCienCasadosUniversitarios)
+        {
+            <li>@socio.Nombre - @socio.Edad años - Equipo: @socio.Equipo</li>
+        }
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10">Nombres Más Comunes entre Hinchas de River</h2>
+    <ul class="text-lg">
+        @foreach (var nombre in Model.NombresComunesRiver)
+        {
+            <li>@nombre</li>
+        }
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10">Estadísticas por Equipo</h2>
+    <table class="table-auto border-collapse border border-gray-300 w-full mt-5">
+        <thead>
+            <tr>
+                <th class="border px-4 py-2">Equipo</th>
+                <th class="border px-4 py-2">Promedio de Edad</th>
+                <th class="border px-4 py-2">Menor Edad</th>
+                <th class="border px-4 py-2">Mayor Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var estadistica in Model.EstadisticasEquipos)
+            {
+                <tr>
+                    <td class="border px-4 py-2">@estadistica.Equipo</td>
+                    <td class="border px-4 py-2">@estadistica.PromedioEdad</td>
+                    <td class="border px-4 py-2">@estadistica.MenorEdad</td>
+                    <td class="border px-4 py-2">@estadistica.MayorEdad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
